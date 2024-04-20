@@ -1,5 +1,6 @@
 package org.tarea1;
 
+<<<<<<< HEAD
 abstract class Moneda{
     public Moneda(){
     }
@@ -10,3 +11,10 @@ abstract class Moneda{
     public abstract int getValor();
 
 }
+=======
+public class Moneda {
+    public Moneda(){
+
+    }
+}
+>>>>>>> main
