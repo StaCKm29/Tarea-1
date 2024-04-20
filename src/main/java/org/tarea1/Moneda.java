@@ -1,2 +1,4 @@
-package org.tarea1;public class Moneda {
+package org.tarea1;
+
+public class Moneda {
 }
