@@ -1,18 +1,11 @@
 package org.tarea1;
 
-abstract class Dulce {
-    private int serie;
-
+abstract class Dulce extends Producto {
     /**
      * @param serie numero de serie de un dulce
      */
     public Dulce(int serie){
-        this.serie = serie;
+        super(serie);
     }
-
-    public int getSerie(){
-        return serie;
-    }
-
     public abstract String comer();
 }
