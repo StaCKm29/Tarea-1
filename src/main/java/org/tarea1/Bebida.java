@@ -8,5 +8,4 @@ abstract class Bebida extends Producto {
         super(serie);
     }
 
-    public abstract String beber();
 }

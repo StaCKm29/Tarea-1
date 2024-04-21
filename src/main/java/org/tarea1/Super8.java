@@ -6,7 +6,7 @@ public class Super8 extends Dulce{
     }
 
     @Override
-    public String comer() {
+    public String consumir() {
         return "super8";
     }
 }

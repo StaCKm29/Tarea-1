@@ -38,20 +38,36 @@ public class Expendedor {
      * @param cual tipo de bebida (1 o 2), de lo contrario retorna null
      * @return retorna el tipo de bebida, siempre y cuando los parametros esten bien
      */
-    public Bebida comprarBebida(Moneda m, int cual){
-        Bebida b = null;
+    public Producto comprarProducto(Moneda m, int cual){
+        Producto b = null;
         if (m == null){
             return null;
         }else {
-            if((cual == COCA) || (cual == SPRITE)) {
+            Selector producto = Selector.fromPosicion(cual); 
+            switch (producto){
+                case COCACOLA:
+                    break;
+                case SPRITE:
+                    break;
+                case FANTA:
+                    break;
+                case SNICKERS:
+                    break;
+                case SUPER8:
+                    break;
+            }
+            if((cual == Selector.COCACOLA.ordinal()) || (cual == Selector.SPRITE.ordinal()) || (cual == Selector.FANTA.ordinal())) {
                 if (precioBebida > m.getValor()) {
                     coin.addObjeto(m);
                     return null;
                 } else if (precioBebida == m.getValor()) {
-                    if (cual == COCA) {
+                    if (cual == Selector.COCACOLA.ordinal()) {
                         b = coca.getObjeto();
-                    } else if (cual == SPRITE) {
+                    } else if (cual == Selector.SPRITE.ordinal()) {
                         b = sprite.getObjeto();
+                    }
+                    else if( cual == Selector.FANTA.ordinal()){
+                        b = fanta.getObjeto();
                     }
                     if (b == null) {
                         coin.addObjeto(m);
@@ -76,6 +92,8 @@ public class Expendedor {
                     return b;
 
                 }
+            }else if(cual == Selector.SUPER8.ordinal() || cual ==Selector.SPRITE.ordinal()){
+
             }else{
                 coin.addObjeto(m);
                 return null;
