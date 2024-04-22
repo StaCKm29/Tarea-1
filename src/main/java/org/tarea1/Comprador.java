@@ -7,11 +7,11 @@ public class Comprador {
     /**
      * Constructor
      * @param m
-     * @param cualBebida 1 para cocacola, 2 para sprite
+     * @param cualProducto 1 para cocacola, 2 para sprite
      * @param exp
      */
-    public Comprador(Moneda m, int cualBebida, Expendedor exp){
-        Bebida b1 = exp.comprarBebida(m, cualBebida);
+    public Comprador(Moneda m, int cualProducto, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        Producto b1 = exp.comprarProducto(m, cualProducto);
 
         while (true) {
             Moneda a = exp.getVuelto();
@@ -23,9 +23,9 @@ public class Comprador {
         }
 
         if (b1 != null) {
-            sonido = b1.beber();
+            sonido = b1.consumir();
         }else{
-            sonido = null;
+            throw new NoHayProductoException("No hay producto.");
         }
     }
 
