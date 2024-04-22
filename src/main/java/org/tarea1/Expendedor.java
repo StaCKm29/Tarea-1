@@ -1,35 +1,34 @@
 package org.tarea1;
 
 public class Expendedor {
-    public static final int COCA = 1;
-    public static final int SPRITE = 2;
-    private Deposito <Bebida> coca;
-    private Deposito <Bebida> sprite;
+    private Deposito <Producto> coca;
+    private Deposito <Producto> sprite;
     private Deposito <Moneda> coin;
-    private Deposito <Bebida> fanta;
-    private Deposito <Dulce> snickers;
-    private Deposito <Dulce> super8;
+    private Deposito <Producto> fanta;
+    private Deposito <Producto> snickers;
+    private Deposito <Producto> super8;
     private int precioBebida;
 
-    /**
-     * @param numBebidas cantidad de bebidas a crear por cada tipo
-     * @param precioBebidas
-     */
-    public Expendedor(int numBebidas, int precioBebidas){
-        fanta = new Deposito<Bebida>();
-        coca = new Deposito<Bebida>();
-        sprite = new Deposito<Bebida>();
+    public Expendedor(int numProductos){
+        fanta = new Deposito<Producto>();
+        coca = new Deposito<Producto>();
+        sprite = new Deposito<Producto>();
         coin = new Deposito<Moneda>();
-        snickers = new Deposito<Dulce>();
-        super8 = new Deposito<Dulce>();
+        snickers = new Deposito<Producto>();
+        super8 = new Deposito<Producto>();
 
-        this.precioBebida = precioBebidas;
-        for(int i = 0; i < numBebidas; i++){
+        for(int i = 0; i < numProductos; i++){
             Bebida b1 = new Cocacola(100+i);
             Bebida b2 = new Sprite(200+i);
+            Bebida b3 = new Fanta(300+i);
+            Dulce d1 = new Snickers(400+i);
+            Dulce d2 = new Super8(500+i);
 
             coca.addObjeto(b1);
             sprite.addObjeto(b2);
+            fanta.addObjeto(b3);
+            snickers.addObjeto(d1);
+            super8.addObjeto(d2);
         }
     }
     /**
@@ -38,65 +37,130 @@ public class Expendedor {
      * @param cual tipo de bebida (1 o 2), de lo contrario retorna null
      * @return retorna el tipo de bebida, siempre y cuando los parametros esten bien
      */
-    public Producto comprarProducto(Moneda m, int cual){
+    public Producto comprarProducto(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException{
         Producto b = null;
         if (m == null){
-            return null;
+            throw new PagoIncorrectoException("La moneda debe iniciarse con una clase con valor.\n Cambie el valor null de la moneda.");
         }else {
             Selector producto = Selector.fromPosicion(cual); 
             switch (producto){
                 case COCACOLA:
-                    break;
+                    if(producto.COCACOLA.getPrecio() > m.getValor()){
+                        coin.addObjeto(m);
+                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                    } else if (producto.COCACOLA.getPrecio() == m.getValor()){
+                        b = coca.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        return b;
+                    } else {
+                        b = coca.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        int n = (m.getValor() - producto.getPrecio()) / 100;
+                        for(int i = 0; i < n; i++){
+                            coin.addObjeto(new Moneda100());
+                        }
+                        return b;
+                    }
                 case SPRITE:
-                    break;
+                    if(producto.SPRITE.getPrecio() > m.getValor()){
+                        coin.addObjeto(m);
+                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                    } else if (Selector.SPRITE.getPrecio() == m.getValor()){
+                        b = sprite.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        return b;
+                    } else {
+                        b = sprite.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        int n = (m.getValor() - producto.getPrecio()) / 100;
+                        for(int i = 0; i < n; i++){
+                            coin.addObjeto(new Moneda100());
+                        }
+                        return b;
+                    }
                 case FANTA:
-                    break;
-                case SNICKERS:
-                    break;
-                case SUPER8:
-                    break;
-            }
-            if((cual == Selector.COCACOLA.ordinal()) || (cual == Selector.SPRITE.ordinal()) || (cual == Selector.FANTA.ordinal())) {
-                if (precioBebida > m.getValor()) {
-                    coin.addObjeto(m);
-                    return null;
-                } else if (precioBebida == m.getValor()) {
-                    if (cual == Selector.COCACOLA.ordinal()) {
-                        b = coca.getObjeto();
-                    } else if (cual == Selector.SPRITE.ordinal()) {
-                        b = sprite.getObjeto();
-                    }
-                    else if( cual == Selector.FANTA.ordinal()){
+                    if(producto.FANTA.getPrecio() > m.getValor()){
+                        coin.addObjeto(m);
+                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                    } else if (producto.FANTA.getPrecio() == m.getValor()){
                         b = fanta.getObjeto();
-                    }
-                    if (b == null) {
-                        coin.addObjeto(m);
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        return b;
+                    } else {
+                        b = fanta.getObjeto();
+                        if (b == null) {
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        int n = (m.getValor() - producto.getPrecio()) / 100;
+                        for (int i = 0; i < n; i++) {
+                            coin.addObjeto(new Moneda100());
+                        }
                         return b;
                     }
-                    return b;
-                } else {
-                    if (cual == COCA) {
-                        b = coca.getObjeto();
-                    } else if (cual == SPRITE) {
-                        b = sprite.getObjeto();
-                    }
-                    if (b == null) {
+                case SNICKERS:
+                    if(producto.SNICKERS.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
+                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                    } else if (producto.SNICKERS.getPrecio() == m.getValor()){
+                        b = snickers.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        return b;
+                    } else {
+                        b = snickers.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        int n = (m.getValor() - producto.getPrecio()) / 100;
+                        for(int i = 0; i < n; i++){
+                            coin.addObjeto(new Moneda100());
+                        }
                         return b;
                     }
-
-                    int n = (m.getValor() - precioBebida) / 100;
-                    for (int i = 0; i < n; i++) {
-                        coin.addObjeto(new Moneda100());
+                case SUPER8:
+                    if(producto.SUPER8.getPrecio() > m.getValor()){
+                        coin.addObjeto(m);
+                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                    } else if (producto.SUPER8.getPrecio() == m.getValor()){
+                        b = super8.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        return b;
+                    } else {
+                        b = super8.getObjeto();
+                        if(b == null){
+                            coin.addObjeto(m);
+                            throw new NoHayProductoException("No hay producto en el deposito.");
+                        }
+                        int n = (m.getValor() - producto.getPrecio()) / 100;
+                        for(int i = 0; i < n; i++){
+                            coin.addObjeto(new Moneda100());
+                        }
+                        return b;
                     }
-                    return b;
-
-                }
-            }else if(cual == Selector.SUPER8.ordinal() || cual ==Selector.SPRITE.ordinal()){
-
-            }else{
-                coin.addObjeto(m);
-                return null;
+                default:
+                    throw new NoHayProductoException("No hay producto en el deposito.");
             }
         }
     }
