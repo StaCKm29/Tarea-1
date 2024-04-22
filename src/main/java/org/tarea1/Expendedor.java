@@ -40,26 +40,26 @@ public class Expendedor {
     public Producto comprarProducto(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException{
         Producto b = null;
         if (m == null){
-            throw new PagoIncorrectoException("La moneda debe iniciarse con una clase con valor.\n Cambie el valor null de la moneda.");
+            throw new PagoIncorrectoException("Debe instanciar en algun valor la moneda (moneda null).\n");
         }else {
             Selector producto = Selector.fromPosicion(cual); 
             switch (producto){
                 case COCACOLA:
                     if(producto.COCACOLA.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
-                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                         throw new PagoInsuficienteException("El pago es insuficiente para comprar el producto.\n");
                     } else if (producto.COCACOLA.getPrecio() == m.getValor()){
                         b = coca.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         return b;
                     } else {
                         b = coca.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         int n = (m.getValor() - producto.getPrecio()) / 100;
                         for(int i = 0; i < n; i++){
@@ -70,19 +70,19 @@ public class Expendedor {
                 case SPRITE:
                     if(producto.SPRITE.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
-                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                        throw new PagoInsuficienteException("El pago es insuficiente para comprar el producto.\n");
                     } else if (Selector.SPRITE.getPrecio() == m.getValor()){
                         b = sprite.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         return b;
                     } else {
                         b = sprite.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         int n = (m.getValor() - producto.getPrecio()) / 100;
                         for(int i = 0; i < n; i++){
@@ -93,19 +93,19 @@ public class Expendedor {
                 case FANTA:
                     if(producto.FANTA.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
-                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                        throw new PagoInsuficienteException("El pago es insuficiente para comprar el producto.\n");
                     } else if (producto.FANTA.getPrecio() == m.getValor()){
                         b = fanta.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         return b;
                     } else {
                         b = fanta.getObjeto();
                         if (b == null) {
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         int n = (m.getValor() - producto.getPrecio()) / 100;
                         for (int i = 0; i < n; i++) {
@@ -116,19 +116,19 @@ public class Expendedor {
                 case SNICKERS:
                     if(producto.SNICKERS.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
-                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                        throw new PagoInsuficienteException("El pago es insuficiente para comprar el producto.\n");
                     } else if (producto.SNICKERS.getPrecio() == m.getValor()){
                         b = snickers.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         return b;
                     } else {
                         b = snickers.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         int n = (m.getValor() - producto.getPrecio()) / 100;
                         for(int i = 0; i < n; i++){
@@ -139,19 +139,19 @@ public class Expendedor {
                 case SUPER8:
                     if(producto.SUPER8.getPrecio() > m.getValor()){
                         coin.addObjeto(m);
-                        throw new PagoInsuficienteException("El valor del producto supera el valor de su moneda.\n Ingrese una moneda de mayo valor.");
+                        throw new PagoInsuficienteException("El pago es insuficiente para comprar el producto.\n");
                     } else if (producto.SUPER8.getPrecio() == m.getValor()){
                         b = super8.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         return b;
                     } else {
                         b = super8.getObjeto();
                         if(b == null){
                             coin.addObjeto(m);
-                            throw new NoHayProductoException("No hay producto en el deposito.");
+                            throw new NoHayProductoException("No hay producto en el deposito.\n");
                         }
                         int n = (m.getValor() - producto.getPrecio()) / 100;
                         for(int i = 0; i < n; i++){
@@ -160,7 +160,8 @@ public class Expendedor {
                         return b;
                     }
                 default:
-                    throw new NoHayProductoException("No hay producto en el deposito.");
+                    coin.addObjeto(m);
+                    throw new NoHayProductoException("No hay producto en el deposito.\n");
             }
         }
     }

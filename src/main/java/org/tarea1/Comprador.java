@@ -25,14 +25,14 @@ public class Comprador {
         if (b1 != null) {
             sonido = b1.consumir();
         }else{
-            throw new NoHayProductoException("No hay producto.");
+            sonido = null;
         }
     }
 
     public int cuantoVuelto(){
         return vuelto;
     }
-    public String queBebiste(){
+    public String queConsumiste(){
         return sonido;
     }
 
