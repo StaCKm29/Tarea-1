@@ -1,6 +1,10 @@
 package org.tarea1;
 
+/**
+ * Selector servirá para la elección de productos al momento de la compra, y a su vez para designar los precios individuales de cada producto
+ */
 public enum Selector {
+
     COCACOLA(1, 1000),
     SPRITE(2, 1000),
     FANTA(3, 1000),
@@ -13,9 +17,19 @@ public enum Selector {
         this.posicion = posicion;
         this.precio = precio;
     }
+
+    /**
+     *
+     * @return Se retorna el número asociado a cada producto
+     */
     public int getPosicion(){
         return posicion;
     }
+
+    /**
+     *
+     * @return Se retorna el precio del producto
+     */
     public int getPrecio(){
         return precio;
     }

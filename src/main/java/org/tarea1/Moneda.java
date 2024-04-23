@@ -1,12 +1,10 @@
 package org.tarea1;
 
-
+/**Es una plantilla para las monedas*/
 abstract class Moneda{
     public Moneda(){
     }
-    public Moneda getSerie(){
-        return this;
-    }
+    /** Método para obotener  el valor de las monedas */
     public abstract int getValor();
 
 }
