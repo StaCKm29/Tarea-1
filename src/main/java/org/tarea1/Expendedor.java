@@ -1,6 +1,12 @@
 package org.tarea1;
 
+/**
+ * Se encarga de representar un expendedor de Dulces y Bebidas el cual posee distintos depósitos destinados al almacenamiento de cada producto
+ * y un depósito destinado a las monedas del vuelto
+ */
+
 public class Expendedor {
+
     private Deposito <Producto> coca;
     private Deposito <Producto> sprite;
     private Deposito <Moneda> coin;
@@ -8,6 +14,11 @@ public class Expendedor {
     private Deposito <Producto> snickers;
     private Deposito <Producto> super8;
     private int precioBebida;
+
+    /**
+     * El método constructor se encargará de recibir la cantidad de stock deseado para cada producto, y llenará los depósitos con la cantidad requerida
+     * @param numProductos Es la cantidad de cada producto que habrán inicialmente en el expendedor
+     */
 
     public Expendedor(int numProductos){
         fanta = new Deposito<Producto>();
@@ -34,8 +45,8 @@ public class Expendedor {
     /**
      *
      * @param m una moneda, la cual se debe evaluar si existe o es null
-     * @param cual tipo de bebida (1 o 2), de lo contrario retorna null
-     * @return retorna el tipo de bebida, siempre y cuando los parametros esten bien
+     * @param cual Se usa para la elección del producto deseado, 1 para cocacola, 2 para sprite, 3 para fanta, 4 para snickers y 5 para super8
+     * @return retorna el producto deseado
      */
     public Producto comprarProducto(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException{
         Producto b = null;
@@ -44,6 +55,11 @@ public class Expendedor {
         }else {
             Selector producto = Selector.fromPosicion(cual); 
             switch (producto){
+                /**
+                 * En caso que el producto seleccionado sea una cocacola, primero se validará que la cantidad de dinero sea suficiente para pagar el
+                 * producto, luego se verificará que exista stock del mismo. Una vez pasados estos filtros se calcula el vuelto en monedas de a 100 y se
+                 * llena el depósito de vuelto con la cantidad necesaria, y finalmente se entrega la cocacola. Esto es análogo para los demás productos
+                 */
                 case COCACOLA:
                     if(producto.COCACOLA.getPrecio() > m.getValor()){
                         coin.addObjeto(m);

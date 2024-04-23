@@ -2,6 +2,7 @@ package org.tarea1;
 import java.util.ArrayList;
 
 public class Deposito<T> {
+
     private ArrayList<T> almacen;
     public Deposito() {
         almacen = new ArrayList<T>();
