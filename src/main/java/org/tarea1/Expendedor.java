@@ -13,7 +13,6 @@ public class Expendedor {
     private Deposito <Producto> fanta;
     private Deposito <Producto> snickers;
     private Deposito <Producto> super8;
-    private int precioBebida;
 
     /**
      * El método constructor se encargará de recibir la cantidad de stock deseado para cada producto, y llenará los depósitos con la cantidad requerida
