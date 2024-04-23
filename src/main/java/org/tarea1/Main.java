@@ -1,5 +1,13 @@
 package org.tarea1;
 
+/**
+ * Un proyecto que simula un expendedor donde se pueda comprar productos
+ * (Bebidas, Dulces) con monedas.
+ * @autor: Gabriel Castillo autor1
+ * @autor: Marcos Martínez autor2
+ * @version versión 1, 26 de abril del 2024
+
+ */
 public class Main {
     public static void main(String[] args){
         Expendedor exp = new Expendedor(7);
