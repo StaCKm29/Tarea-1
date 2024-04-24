@@ -14,6 +14,9 @@ public class Main {
         Moneda m1 = null;
         Moneda m2 = new Moneda500();
         Moneda m3 = new Moneda1000();
+        Producto b = new Cocacola(200);
+        Producto s = new Snickers(1000);
+        System.out.println(b.getSerie() + " " + s.getSerie());
         try {
             //Comprador c = new Comprador(m1, 4, exp);
             //Comprador c2 = new Comprador(m2, 1, exp);
@@ -33,5 +36,6 @@ public class Main {
         }catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
