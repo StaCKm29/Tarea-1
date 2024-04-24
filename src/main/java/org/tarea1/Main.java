@@ -9,56 +9,82 @@ package org.tarea1;
 
  */
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Expendedor exp = new Expendedor(7);
         Moneda m1 = null;
-        Moneda m2 = new Moneda500();
-        Moneda m3 = new Moneda1000();
+        Moneda m2 = null;
+        Moneda m3 = null;
+        Moneda m4 = null;
+        Moneda m5 = null;
         try {
-            Comprador c4 = new Comprador(m3, 3, exp);
+            m1 = new Moneda1000();
+            Comprador c4 = new Comprador(m1, 5, exp);
             System.out.println(c4.queConsumiste() + ", " + c4.cuantoVuelto());
-        }catch (PagoIncorrectoException e) {
+        } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-        }catch (PagoInsuficienteException e) {
-            System.out.println(e.getMessage());
-        }catch (NoHayProductoException e) {
-            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        } catch (PagoInsuficienteException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
         }
 
-        try{
-            Comprador c = new Comprador(m1, 4, exp);
+        try {
+            Comprador c = new Comprador(m2, 4, exp);
             System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
-        }catch (PagoIncorrectoException e) {
+        } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-        }catch (PagoInsuficienteException e) {
-            System.out.println(e.getMessage());
-        }catch (NoHayProductoException e) {
-            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        } catch (PagoInsuficienteException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
         }
 
-        try{
-            Comprador c2 = new Comprador(m2, 1, exp);
+        try {
+            m3 = new Moneda500();
+            Comprador c2 = new Comprador(m3, 1, exp);
             System.out.println(c2.queConsumiste() + ", " + c2.cuantoVuelto());
-        }catch (PagoIncorrectoException e) {
+        } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-        }catch (PagoInsuficienteException e) {
+        } catch (NoHayProductoException e) {
+        Moneda moneda = exp.getVuelto();
+        System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        } catch (PagoInsuficienteException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        }
+        try {
+            m4 = new Moneda1000();
+            Comprador c4 = new Comprador(m4, 10, exp);
+            System.out.println(c4.queConsumiste() + ", " + c4.cuantoVuelto());
+        } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-        }catch (NoHayProductoException e) {
-            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        } catch (PagoInsuficienteException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
         }
 
-        try{
-            for(int i = 0; i <= 7; i++) {
-                Comprador c3 = new Comprador(m3, 2, exp);
+        try {
+            for (int i = 0; i <= 7; i++) {
+                m5 = new Moneda1000();
+                Comprador c3 = new Comprador(m5, 2, exp);
                 System.out.println(c3.queConsumiste() + ", " + c3.cuantoVuelto());
             }
-            
-        }catch (PagoIncorrectoException e) {
+
+        } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-        }catch (PagoInsuficienteException e) {
-            System.out.println(e.getMessage());
-        }catch (NoHayProductoException e) {
-            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
+        } catch (PagoInsuficienteException e) {
+            Moneda moneda = exp.getVuelto();
+            System.out.println(e.getMessage() + "Vuelto: " + moneda.getValor() + "\n");
         }
     }
 }
