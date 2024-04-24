@@ -10,7 +10,6 @@ class Moneda100 extends Moneda{
     }
 
     /**
-     *
      * @return retorna un valor de 100
      */
     public int getValor() {
