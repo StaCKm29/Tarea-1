@@ -13,6 +13,7 @@ class Moneda1000 extends Moneda{
     /**
      * @return Retorna un valor de 1000
      */
+    @Override
     public int getValor() {
         return 1000;
     }
