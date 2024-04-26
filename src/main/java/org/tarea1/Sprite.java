@@ -1,8 +1,10 @@
 package org.tarea1;
 
+/**
+ * Cumple la función de representar una Sprite
+ */
 public class Sprite extends  Bebida{
     /**
-     * Cumple la función de representar una Sprite
      * @param serie serie del producto
      */
     public Sprite(int serie){
