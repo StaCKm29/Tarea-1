@@ -46,6 +46,15 @@ public class Expendedor {
      * @param cual Se usa para la elección del producto deseado, 1 para cocacola, 2 para sprite, 3 para fanta, 4 para snickers y 5 para super8
      * @return retorna el producto deseado en caso de que exista
      */
+    /**
+     * Cumple la función de comprar un producto a través de una moneda y una elección
+     * @param m una moneda, la cual se debe evaluar si existe o es null
+     * @param cual Se usa para la elección del producto deseado, 1 para cocacola, 2 para sprite, 3 para fanta, 4 para snickers y 5 para super8
+     * @return retorna el producto deseado en caso de que exista
+     * @throws NoHayProductoException Una excepción que se lanza cuando no hay stock de producto en el depósito, o bien, no existe el producto.
+     * @throws PagoIncorrectoException Una excepción que se lanza cuando la moneda no se ha instanciado correctamente.
+     * @throws PagoInsuficienteException Una excepción que se lanza cuando la moneda es insuficiente para pagar el producto deseado.
+     */
     public Producto comprarProducto(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException{
         Producto b = null;
         if (m == null){

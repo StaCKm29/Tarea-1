@@ -8,7 +8,10 @@ public class Comprador {
      * Comprador representará a un comprador que cuenta con una moneda para pagar, una  elección de producto y un expendedor donde realizará su compra
      * @param m Es la moneda ingresada
      * @param cualProducto Se usa para la elección del producto deseado, 1 para cocacola, 2 para sprite, 3 para fanta, 4 para snickers y 5 para super8
-     * @param exp Es el expendedor donde se realizará compra
+     * @param exp Es el expendedor donde se realizará compra.
+     * @throws NoHayProductoException En caso que no haya stock o que el producto no exista.
+     * @throws PagoInsuficienteException En caso que la moneda sea insuficiente para pagar el producto deseado.
+     * @throws PagoIncorrectoException En caso que la moneda no se haya instanciado correctamente.
      */
     public Comprador(Moneda m, int cualProducto, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         Producto b1 = exp.comprarProducto(m, cualProducto);

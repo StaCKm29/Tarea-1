@@ -5,8 +5,8 @@ import javax.swing.*;
 /**
  * Un proyecto que simula una venta a través de un expendedor de dulces y bebidas, mediante un comprador el cual maneja monedas para comprar
  * diversos productos.
- * @autor: Gabriel Castillo autor1
- * @autor: Marcos Martínez autor2
+ * @author: Gabriel Castillo autor1
+ * @author: Marcos Martínez autor2
  * @version versión 1, 26 de abril del 2024
 
  */

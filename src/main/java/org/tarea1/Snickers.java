@@ -12,7 +12,7 @@ public class Snickers extends Dulce {
     }
 
     /**
-     *  @Return Retorna que se ha consumido un snickers
+     *  @return Retorna que se ha consumido un snickers
      *
      */
     @Override
