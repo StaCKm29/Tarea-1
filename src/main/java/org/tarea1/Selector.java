@@ -1,5 +1,8 @@
 package org.tarea1;
 
+/**
+ * Selector servirá para la elección de productos al momento de la compra, y a su vez para designar los precios individuales de cada producto
+ */
 public enum Selector {
 
     COCACOLA(1, 1000),
@@ -11,7 +14,6 @@ public enum Selector {
     private final int precio;
 
     /**
-     * Selector servirá para la elección de productos al momento de la compra, y a su vez para designar los precios individuales de cada producto
      * @param posicion Número asociado a cada producto
      * @param precio El precio del producto
      */

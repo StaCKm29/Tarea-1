@@ -1,8 +1,10 @@
 package org.tarea1;
 
+/**
+ * Cumple la función de representar una cocacola
+ */
 public class Cocacola extends Bebida{
     /**
-     *Cumple la función de representar una cocacola
      * @param serie
      */
     public Cocacola(int serie){

@@ -1,8 +1,10 @@
 package org.tarea1;
 
+/**
+ * Cumple la función de representar un snickers
+ */
 public class Snickers extends Dulce {
     /**
-     *Cumple la función de representar un snickers
      * @param serie serie del producto
      */
     public Snickers(int serie) {
